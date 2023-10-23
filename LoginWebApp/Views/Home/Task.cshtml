@@ -1,0 +1,28 @@
+﻿@using LoginWebApp.Core.ViewModel;
+@model TaskViewModel
+
+
+<form asp-controller="Home" asp-action="Task" method="post">
+    <div class="form-group">
+        <label for="Title">Task Title:</label>
+        <input type="text" id="Title" name="Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Description">Task Description:</label>
+        <textarea id="Description" name="Description" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="Priority">Priority:</label>
+        <select id="Priority" name="Priority" class="form-control">
+            <option value="Critical">Critical</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="EstimatedHours">Estimated Hours:</label>
+        <input type="number" id="EstimatedHours" name="EstimatedHours" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Create Task</button>
+</form>

@@ -1,0 +1,9 @@
+D:\Dotnet\Core\LoginWebApp.Core\bin\Debug\netcoreapp3.1\LoginWebApp.Core.deps.json
+D:\Dotnet\Core\LoginWebApp.Core\bin\Debug\netcoreapp3.1\LoginWebApp.Core.dll
+D:\Dotnet\Core\LoginWebApp.Core\bin\Debug\netcoreapp3.1\LoginWebApp.Core.pdb
+D:\Dotnet\Core\LoginWebApp.Core\obj\Debug\netcoreapp3.1\LoginWebApp.Core.csproj.AssemblyReference.cache
+D:\Dotnet\Core\LoginWebApp.Core\obj\Debug\netcoreapp3.1\LoginWebApp.Core.AssemblyInfoInputs.cache
+D:\Dotnet\Core\LoginWebApp.Core\obj\Debug\netcoreapp3.1\LoginWebApp.Core.AssemblyInfo.cs
+D:\Dotnet\Core\LoginWebApp.Core\obj\Debug\netcoreapp3.1\LoginWebApp.Core.csproj.CoreCompileInputs.cache
+D:\Dotnet\Core\LoginWebApp.Core\obj\Debug\netcoreapp3.1\LoginWebApp.Core.dll
+D:\Dotnet\Core\LoginWebApp.Core\obj\Debug\netcoreapp3.1\LoginWebApp.Core.pdb

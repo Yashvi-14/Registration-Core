@@ -1,0 +1,12 @@
+D:\Dotnet\Core\LoginWebApp.Infrastructure\bin\Debug\netcoreapp3.1\LoginWebApp.Infrastructure.deps.json
+D:\Dotnet\Core\LoginWebApp.Infrastructure\bin\Debug\netcoreapp3.1\LoginWebApp.Infrastructure.dll
+D:\Dotnet\Core\LoginWebApp.Infrastructure\bin\Debug\netcoreapp3.1\LoginWebApp.Infrastructure.pdb
+D:\Dotnet\Core\LoginWebApp.Infrastructure\bin\Debug\netcoreapp3.1\LoginWebApp.Core.dll
+D:\Dotnet\Core\LoginWebApp.Infrastructure\bin\Debug\netcoreapp3.1\LoginWebApp.Core.pdb
+D:\Dotnet\Core\LoginWebApp.Infrastructure\obj\Debug\netcoreapp3.1\LoginWebApp.Infrastructure.csproj.AssemblyReference.cache
+D:\Dotnet\Core\LoginWebApp.Infrastructure\obj\Debug\netcoreapp3.1\LoginWebApp.Infrastructure.AssemblyInfoInputs.cache
+D:\Dotnet\Core\LoginWebApp.Infrastructure\obj\Debug\netcoreapp3.1\LoginWebApp.Infrastructure.AssemblyInfo.cs
+D:\Dotnet\Core\LoginWebApp.Infrastructure\obj\Debug\netcoreapp3.1\LoginWebApp.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Dotnet\Core\LoginWebApp.Infrastructure\obj\Debug\netcoreapp3.1\LoginWebApp.Infrastructure.csproj.CopyComplete
+D:\Dotnet\Core\LoginWebApp.Infrastructure\obj\Debug\netcoreapp3.1\LoginWebApp.Infrastructure.dll
+D:\Dotnet\Core\LoginWebApp.Infrastructure\obj\Debug\netcoreapp3.1\LoginWebApp.Infrastructure.pdb

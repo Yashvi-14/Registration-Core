@@ -1,0 +1,92 @@
+﻿
+@using LoginWebApp.Core.ViewModel;
+@model List<TaskViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<head>
+    <!-- Other head elements go here -->
+    <link rel="stylesheet" href="~/css/Task.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+
+</head>
+
+<div class="text-center">
+    <h3>Welcome</h3>
+    @if (TempData["RegistrationSuccess"] != null)
+    {
+        <p>@TempData["RegistrationSuccess"]</p>
+    }
+    @if (TempData["LoginSuccess"] != null)
+    {
+        <p>@TempData["LoginSuccess"]</p>
+    }
+</div>
+
+<h2>Task List</h2>
+
+<table class="task-table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Estimated Hours</th>
+            <th>Status</th>
+            <th>AssignToUserId</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.Title</td>
+                <td>@task.Description</td>
+                <td>@task.Priority</td>
+                <td>@task.EstimatedHours</td>
+                @*<td>@task.AssignedUserId</td>*@
+                <td>@task.Status</td>
+                <td>
+                   
+                @task.AssignedUserId
+                    
+                </td>
+                <td class="actions">
+
+                    <form method="get" asp-controller="Home" asp-action="Edit">
+                        <input type="hidden" name="taskId" value="@task.Id" />
+                        <button type="submit" class="edit" title="Edit Task">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </form>
+                    <form method="post" asp-controller="Home" asp-action="Delete" onsubmit="return confirm('Are you sure you want to delete this task?');">
+                        <input type="hidden" name="taskId" value="@task.Id" />
+                        <button type="submit" class="delete" title="Delete Task">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<button>
+    <a href="/Home/Task" title="Create Task">
+        <i class="fas fa-plus"></i> Create Task
+    </a>
+</button>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+

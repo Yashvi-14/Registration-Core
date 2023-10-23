@@ -1,0 +1,79 @@
+﻿
+@using LoginWebApp.Core.ViewModel
+@model TaskViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<form method="post" asp-controller="Home" asp-action="Edit">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+
+        @if (Model.Status != "New")
+        {
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="UserId" />
+            <input type="hidden" asp-for="AssignedUserId" />
+
+            <label asp-for="Status" class="control-label"></label>
+            <select asp-for="Status" class="form-control" id="taskStatus">
+                <option value="New" hidden></option>
+                <option value="In-Progress">In-Progress</option>
+                <option value="Completed">Completed</option>
+                <option value="Closed">Closed</option>
+            </select>
+            <span asp-validation-for="Status" class="text-danger"></span>
+
+
+        }
+        else
+        {
+            <div class="form-group">
+                <input type="hidden" asp-for="UserId" />
+                <input type="hidden" asp-for="Id" />
+                @*<select asp-for="AssignedUserId" asp-items="new SelectList(ViewBag.Users, nameof(SelectListItem.Value), nameof(SelectListItem.Text))" id="assignToUser" disabled>*@
+                <select asp-for="AssignedUserId" id="assignToUser">
+                    @foreach (var user in ViewBag.Users)
+                    {
+                        <option value="@user.Value">@user.Text</option>
+                    }
+                </select>
+            </div>
+        }
+
+        @*<button type="submit" class="btn btn-primary" onclick="enabledisabledropdowns(UserId,'Id',Status)">save changes</button>*@
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </div>
+</form>
+
+@*<script>
+    function enableDisableUserDropdown(assignToUser, Id, taskstatus) {
+        debugger;
+        $("#Id").val(Id);
+        $("#assignToUser").val(assignToUser);
+        $("#taskStatus").val(taskstatus);
+        var taskStatusField = taskstatus;
+
+        // Find the userlist option in the form
+        var assignToUserSelect = $("#assignToUser");
+        var taskstatusselect = $("#taskStatus")
+
+
+        if (taskStatusField != "New") {
+            assignToUserSelect.prop('disabled', true);
+        } else {
+            assignToUserSelect.prop('disabled', false);
+        }
+
+        if (taskStatusField == "Open" || taskStatusField == "In-Progress" || taskStatusField == "Completed" || taskStatusField == "closed") {
+            taskstatusselect.prop('disabled', false);
+        }
+        else {
+            taskstatusselect.prop('disabled', true);
+        }
+    }
+
+</script>*@

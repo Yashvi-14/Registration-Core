@@ -1,0 +1,45 @@
+﻿.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+    .task-table th,
+    .task-table td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    .task-table th {
+        background-color: #f2f2f2;
+    }
+
+.actions {
+    text-align: center;
+}
+
+.edit,
+.delete {
+    display: inline-block;
+    margin-right: 5px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+/*.create-button {
+    margin-top: 20px;
+}*/
+
+    .create-button a {
+        text-decoration: none;
+        color: #fff;
+        background-color: #007bff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+        .create-button a:hover {
+            background-color: #0056b3;
+        }
