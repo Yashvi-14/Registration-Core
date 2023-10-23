@@ -75,20 +75,18 @@ namespace LoginWebApp.Application.Services
             {
                 if (string.IsNullOrWhiteSpace(task.Status))
                 {
-                    // Set it to "open" as the default value
                     task.Status = TaskStatus.Open.ToString();
                 }
                 else
                 {
-                    // Check if a status is selected from the dropdown, and set it
-                    // Here, I assume that you have a property like "SelectedStatus" in TaskViewModel
+                    
                     if (!string.IsNullOrWhiteSpace(task.Status))
                     {
                         task.Status = task.Status;
                     }
                 }
             }
-            return tasks; // Return the list of tasks
+            return tasks; 
         }
 
 
