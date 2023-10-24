@@ -9,25 +9,43 @@
 
 
 <head>
-    <!-- Other head elements go here -->
-    <link rel="stylesheet" href="~/css/Task.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
-
+    <link rel="stylesheet" href="~/css/Task.css" />
 </head>
 
 <div class="text-center">
-    <h3>Welcome</h3>
+    @if (TempData["LoginSuccess"] != null)
+    {
+
+        <h5>Welcome, @ViewBag.Username</h5>
+
+        @*<p>@TempData["LoginSuccess"]</p>*@
+    }
+
     @if (TempData["RegistrationSuccess"] != null)
     {
         <p>@TempData["RegistrationSuccess"]</p>
     }
-    @if (TempData["LoginSuccess"] != null)
-    {
-        <p>@TempData["LoginSuccess"]</p>
-    }
+
+    @*<a asp-controller="Home" asp-action="Logout" class="btn btn-primary">Logout</a>*@
 </div>
 
-<h2>Task List</h2>
+  
+
+
+<h2 class="header">Task List</h2>
+@*<button class="btn btn-primary">
+   
+    <a href="/Home/Task" title="Create Task">
+        <i class="fas fa-plus"> </i>
+        Create Task
+    </a>
+</button>*@
+
+<p>
+    <a asp-action="Task" asp-controller="Home" class="btn btn-primary">
+        <i class="fas fa-plus"> </i> Create New</a>
+</p>
 
 <table class="task-table">
     <thead>
@@ -52,9 +70,9 @@
                 @*<td>@task.AssignedUserId</td>*@
                 <td>@task.Status</td>
                 <td>
-                   
-                @task.AssignedUserId
-                    
+
+                    @task.AssignedUserId
+
                 </td>
                 <td class="actions">
 
@@ -77,11 +95,7 @@
     </tbody>
 </table>
 
-<button>
-    <a href="/Home/Task" title="Create Task">
-        <i class="fas fa-plus"></i> Create Task
-    </a>
-</button>
+
 
 @if (ViewBag.ErrorMessage != null)
 {
@@ -90,3 +104,8 @@
     </div>
 }
 
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

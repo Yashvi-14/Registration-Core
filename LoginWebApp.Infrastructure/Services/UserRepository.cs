@@ -143,10 +143,38 @@ namespace LoginWebApp.Infrastructure.Services
                 return false;
             }
         }
-        public int AuthenticateUser(string userName, string password)
+        /*  public int AuthenticateUser(string userName, string password)
+          {
+              int userId = 0;
+              string username = null;
+              string query = "SELECT IdUser, UserName FROM UserMaster_Yashvi WHERE UserName = @UserName AND Password = @Password";
+              var mySqlParams = new List<SqlParameter>
+      {
+          new SqlParameter("@UserName", userName),
+          new SqlParameter("@Password", password)
+      };
+
+              DataTable result = GetDataTable(query, mySqlParams);
+
+              if (result.Rows.Count > 0)
+              {
+                  userId = Convert.ToInt32(result.Rows[0]["IdUser"]);
+                  username = result.Rows[0]["UserName"].ToString();
+
+
+
+                  return userId;
+              }
+              else
+              {
+                  return -1;
+              }
+          }*/
+        public LoginViewModel AuthenticateUser(string userName, string password)
         {
             int userId = 0;
-            string query = "SELECT IdUser FROM UserMaster_Yashvi WHERE UserName = @UserName AND Password = @Password";
+            string username = null;
+            string query = "SELECT IdUser, UserName FROM UserMaster_Yashvi WHERE UserName = @UserName AND Password = @Password";
             var mySqlParams = new List<SqlParameter>
     {
         new SqlParameter("@UserName", userName),
@@ -158,13 +186,21 @@ namespace LoginWebApp.Infrastructure.Services
             if (result.Rows.Count > 0)
             {
                 userId = Convert.ToInt32(result.Rows[0]["IdUser"]);
-                return userId;
+                username = result.Rows[0]["UserName"].ToString();
+
+               
+                return new LoginViewModel
+                {
+                    UserId = userId,
+                    UserName = username
+                };
             }
             else
             {
-                return -1;
+                return null; 
             }
         }
+
 
         public void CreateTask(TaskViewModel task, int userId, int? assignedUserId)
         {
@@ -223,7 +259,7 @@ namespace LoginWebApp.Infrastructure.Services
                     Title = row["Title"].ToString(),
                     Description = row["Description"].ToString(),
                     Priority = row["Priority"].ToString(),
-                    EstimatedHours = Convert.ToInt32(row["EstimatedHours"]),
+                    EstimatedHours = Convert.ToDouble(row["EstimatedHours"]),
                     Status = row["Status"].ToString(),
                     AssignedUserId = assignedUserId,
                     UserId = userId
@@ -287,7 +323,7 @@ namespace LoginWebApp.Infrastructure.Services
                         Title = row["Title"].ToString(),
                         Description = row["Description"].ToString(),
                         Priority = row["Priority"].ToString(),
-                        EstimatedHours = Convert.ToInt32(row["EstimatedHours"]),
+                        EstimatedHours = Convert.ToDouble(row["EstimatedHours"]),
                         //Status = row["Status"] != DBNull.Value ? row["Status"].ToString() : "Open",
                         Status = row["Status"].ToString(),
                         UserId = Convert.ToInt32(row["IdUser"]),
@@ -381,7 +417,7 @@ namespace LoginWebApp.Infrastructure.Services
                     Title = row["Title"].ToString(),
                     Description = row["Description"].ToString(),
                     Priority = row["Priority"].ToString(),
-                    EstimatedHours = Convert.ToInt32(row["EstimatedHours"]),
+                    EstimatedHours = Convert.ToDouble(row["EstimatedHours"]),
                     Status = row["Status"] != DBNull.Value ? row["Status"].ToString() : "Open"
 
                 };

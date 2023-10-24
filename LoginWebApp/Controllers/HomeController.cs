@@ -27,27 +27,14 @@ namespace LoginWebApp.Controllers
             _logger = logger;
             _userService = userService;
         }
-        /*    [HttpGet]
-            public IActionResult Index()
-            {
-                string userIdString = HttpContext.Session.GetString("IdUser");
-
-                if (int.TryParse(userIdString, out int userId))
-                {
-                    List<TaskViewModel> userTasks = _userService.GetTasksForUser(userId);
-
-
-                    return View(userTasks);
-                }
-                else
-                {
-                    return RedirectToAction("Login");
-                }
-            }*/
+        
         [HttpGet]
         public IActionResult Index()
         {
             string userIdString = HttpContext.Session.GetString("IdUser");
+            string username = HttpContext.Session.GetString("Username");
+
+            ViewBag.Username = username;
 
             if (int.TryParse(userIdString, out int userId))
             {
@@ -62,6 +49,7 @@ namespace LoginWebApp.Controllers
             }
             else
             {
+               
                 return RedirectToAction("Login");
             }
         }
@@ -100,20 +88,25 @@ namespace LoginWebApp.Controllers
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost]  
         public IActionResult Login(LoginViewModel model)
         {
-            int authenticationResult = _userService.AuthenticateUser(model.UserName, model.Password);
+            LoginViewModel loginResult = _userService.AuthenticateUser(model.UserName, model.Password);
 
-            if (authenticationResult > 0)
+            if (loginResult != null)
             {
-                
-                HttpContext.Session.SetString("IdUser", authenticationResult.ToString());
+             
+                int userId = loginResult.UserId;
+                string username = loginResult.UserName;
+
+                HttpContext.Session.SetString("IdUser", userId.ToString());
+                HttpContext.Session.SetString("Username", username);
                 TempData["LoginSuccess"] = "Login Successful";
                 return RedirectToAction("Index");
             }
             else
             {
+               
                 ModelState.AddModelError(string.Empty, "Authentication failed. Please try again.");
                 return View(model);
             }
@@ -172,6 +165,7 @@ namespace LoginWebApp.Controllers
         public IActionResult Edit(int taskId)
         {
             var task = _userService.GetTaskById(taskId);
+            string userIdString = HttpContext.Session.GetString("Username");
 
             if (task == null)
             {
@@ -234,7 +228,13 @@ namespace LoginWebApp.Controllers
         }
 
 
+        public IActionResult Logout()
+        {
+            
+            HttpContext.Session.Clear();
 
+            return RedirectToAction("Login"); 
+        }
 
 
 
@@ -247,7 +247,7 @@ namespace LoginWebApp.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ErrorMessage = "Error while deleting"; 
-            return View("Index");
+            return View("DeleteError");
 
         }
         public IActionResult Error()

@@ -47,7 +47,7 @@ namespace LoginWebApp.Application.Services
         {
             return _userRepository.GetNationalities();
         }
-        public int AuthenticateUser(string userName, string password)
+        public LoginViewModel AuthenticateUser(string userName, string password)
         {
             
             return _userRepository.AuthenticateUser(userName, password);

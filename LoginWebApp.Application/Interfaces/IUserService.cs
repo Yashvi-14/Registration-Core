@@ -12,7 +12,8 @@ namespace LoginWebApp.Application.Interfaces
 
         bool RegisterUser(RegisterViewModel model);
         List<SelectListItem> GetNationalities();
-        int AuthenticateUser(string userName, string password);
+        //int AuthenticateUser(string userName, string password);
+        public LoginViewModel AuthenticateUser(string userName, string password);
         void CreateTask(TaskViewModel task, int userId, int? assignedUserId);
         List<TaskViewModel> GetTasksForUser(int userId);
        

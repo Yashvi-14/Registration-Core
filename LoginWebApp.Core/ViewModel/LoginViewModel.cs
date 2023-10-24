@@ -11,5 +11,6 @@ namespace LoginWebApp.Core.ViewModel
 
         [Required(ErrorMessage = "Password is required.")]
         public string Password { get; set; }
+        public int UserId { get; set; }
     }
 }
